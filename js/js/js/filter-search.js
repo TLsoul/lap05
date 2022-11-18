@@ -1,0 +1,29 @@
+(function (){
+    var $img = $('#gallery img');
+    var $img = $('#filter-search');
+    var cache = [];
+
+    $img.each(function(){
+        cache.push({
+           Element: this,
+           Text: this.alt.trim().toLowercase() 
+        });
+    });
+
+    function filter(){
+        var query = this.value.trim().tolowerCase();
+        cache.forEach(function (img) {
+            var index=0;
+
+            if (query){
+                index  = img.text.index0f(query);
+            }
+            img.element.style.display = index ===-1 ?  'none':'';
+        });
+    }
+    if ('oninput' in $search[0]){
+        $search.on('input',filter);
+    } else {
+        $search.on('keyup',filter);
+    }
+}());
